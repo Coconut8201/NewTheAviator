@@ -1,3 +1,6 @@
+加入mediapipe 可以透過手部辨識控制飛機的高度
+
+
 # The Aviator
 
 Demos and game for the tutorial "The Making of 'The Aviator': Animating a Basic 3D Scene with Three.js", by Karim Maaloul.
