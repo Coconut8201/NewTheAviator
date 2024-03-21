@@ -1,4 +1,4 @@
-//COLORS
+//COLORS 顏色陣列
 var Colors = {
     red:0xf25346,
     white:0xd8d0d1,
@@ -14,14 +14,14 @@ var Colors = {
 
 // GAME VARIABLES
 var game;
-var deltaTime = 0;
+var deltaTime = 0; //時間差
 var newTime = new Date().getTime();
 var oldTime = new Date().getTime();
 var ennemiesPool = [];
 var particlesPool = [];
 var particlesInUse = [];
 
-function resetGame(){
+function resetGame(){ //重設遊戲
   game = {speed:0,
           initSpeed:.00035,
           baseSpeed:.00035,
@@ -85,7 +85,7 @@ function resetGame(){
   fieldLevel.innerHTML = Math.floor(game.level);
 }
 
-//THREEJS RELATED VARIABLES
+//THREEJS RELATED VARIABLES 跟three.js有關係的變量
 
 var scene,
     camera, fieldOfView, aspectRatio, nearPlane, farPlane,
@@ -93,7 +93,7 @@ var scene,
     container,
     controls;
 
-//SCREEN & MOUSE VARIABLES
+//SCREEN & MOUSE VARIABLES 螢幕跟滑鼠變量
 
 var HEIGHT, WIDTH,
     mousePos = { x: 0, y: 0 };
@@ -152,13 +152,13 @@ function handleWindowResize() {
   camera.updateProjectionMatrix();
 }
 
-function handleMouseMove(event) {
-  var tx = -1 + (event.clientX / WIDTH)*2;
-  var ty = 1 - (event.clientY / HEIGHT)*2;
-  mousePos = {x:tx, y:ty};
-}
+// function handleMouseMove(event) { //滑鼠移動
+//   var tx = -1 + (event.clientX / WIDTH)*2; //享但法替換成True_x就好了
+//   var ty = 1 - (event.clientY / HEIGHT)*2;
+//   mousePos = {x:tx, y:ty};
+// }
 
-function handleTouchMove(event) {
+function handleTouchMove(event) { //應該是手機觸控移動
     event.preventDefault();
     var tx = -1 + (event.touches[0].pageX / WIDTH)*2;
     var ty = 1 - (event.touches[0].pageY / HEIGHT)*2;
@@ -181,7 +181,7 @@ function handleTouchEnd(event){
 }
 
 // LIGHTS
-
+//在 Three.js 中創建不同類型的燈光，以實現場景中對象的照明效果。
 var ambientLight, hemisphereLight, shadowLight;
 
 function createLights() {
@@ -211,7 +211,7 @@ function createLights() {
 
 }
 
-
+//飛行員
 var Pilot = function(){
   this.mesh = new THREE.Object3D();
   this.mesh.name = "pilot";
@@ -755,7 +755,7 @@ CoinsHolder.prototype.rotateCoins = function(){
     }else if (coin.angle > Math.PI){
       this.coinsPool.unshift(this.coinsInUse.splice(i,1)[0]);
       this.mesh.remove(coin.mesh);
-      i--;
+      i--;airplane
     }
   }
 }
@@ -994,7 +994,7 @@ function init(event){
   createEnnemies();
   createParticles();
 
-  document.addEventListener('mousemove', handleMouseMove, false);
+  //document.addEventListener('mousemove', handleMouseMove, false);
   document.addEventListener('touchmove', handleTouchMove, false);
   document.addEventListener('mouseup', handleMouseUp, false);
   document.addEventListener('touchend', handleTouchEnd, false);

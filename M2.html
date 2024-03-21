@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M2.html_test</title>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    
+    <!-- 匯入手部辨識 -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.js" crossorigin="anonymous"></script>
+    <!-- =================================================================== -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,700italic' rel='stylesheet'
+        type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/game.css" />
+
+    <script type="text/javascript" src="js/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/three.min.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+
+    <link rel="stylesheet" href="./css/M2.css">
+    <script type="module" src="./js/M2_1.js"></script>
+</head>
+<body>
+    <div class="game-holder" id="gameHolder"> <!--這是開啟視窗的按鈕-->
+        <div class="header">
+            <div id="liveView">
+                <button id="webcamButton" class="levelUp levelRaise" onclick="console.log('Clicked webcamButton')">
+                    <div class="mdc-button__ripple"></div>
+                    <div class="mdc-button__label">Start WebCham</div>
+                </button>
+            </div>
+            <div class="score" id="score">
+                <div class="score__content" id="level">
+                    <div class="score__label">level</div>
+                    <div class="score__value score__value--level" id="levelValue">1</div>
+                    <svg class="level-circle" id="levelCircle" viewbox="0 0 200 200">
+                        <circle id="levelCircleBgr" r="80" cx="100" cy="100" fill="none" stroke="#d1b790"
+                            stroke-width="24px" />
+                        <circle id="levelCircleStroke" r="80" cx="100" cy="100" fill="none" #f25346 stroke="#68c3c0"
+                            stroke-width="14px" stroke-dasharray="502" />
+                    </svg>
+                </div>
+                <div class="score__content" id="dist">
+                    <div class="score__label">distance</div>
+                    <div class="score__value score__value--dist" id="distValue">000</div>
+                </div>
+                <div class="score__content" id="energy">
+                    <div class="score__label">energy</div>
+                    <div class="score__value score__value--energy" id="energyValue">
+                        <div class="energy-bar" id="energyBar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="world" id="world">
+            <div class="canvas-wrapper">
+                <canvas class="output_canvas" id="output_canvas" style="position: absolute; left: 0px; top: 0px;" ></canvas>
+                <div style="position: relative;">
+                <video id="webcam" style="position: abs" autoplay playsinline width="300" height="225" z-index = 5></video>
+            </div>
+            <!-- <div style="position: relative;"> 這是開啟視窗的，不能放在header中
+                <video id="webcam" style="position: abso" autoplay playsinline></video>
+                <canvas class="output_canvas" id="output_canvas" style="position: absolute; left: 0px; top: 0px;"></canvas>
+            </div>-->
+        </div>
+        <div class="message message--replay" id="replayMessage">Click to Replay</div>
+        <div class="message message--instructions" id="instructions">Grab the blue pills<span>avoid the red ones</span>
+        </div>
+        <p id='gesture_output'></p>
+    </div>
+</body>
+
+</html>

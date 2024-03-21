@@ -15,11 +15,10 @@
 
 .header {
 	position: absolute;
-	top: 8vh;
 	left: 0;
 	width: 100%;
-	text-align: center;
-	pointer-events: none;
+	/* text-align: center; */
+	/* pointer-events: none; */
 }
 
 .header h1 {
@@ -51,7 +50,7 @@
 
 .score {
 	width: 100%;
-	margin: 2em 0 0;
+	/* margin: 2em 0 0; */
 	text-align: center;
 	white-space: nowrap;
 }
